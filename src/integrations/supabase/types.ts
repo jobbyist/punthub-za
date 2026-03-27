@@ -14,7 +14,117 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          address_line1: string | null
+          address_line2: string | null
+          age_verified: boolean
+          avatar_url: string | null
+          bank_confirmation_url: string | null
+          city: string | null
+          country: string | null
+          created_at: string
+          date_of_birth: string | null
+          display_name: string | null
+          email: string | null
+          full_name: string | null
+          government_id_url: string | null
+          id: string
+          kyc_status: string
+          phone: string | null
+          postal_code: string | null
+          proof_of_address_url: string | null
+          punt_points: number
+          social_discord: string | null
+          social_telegram: string | null
+          social_twitter: string | null
+          state: string | null
+          updated_at: string
+          username: string
+        }
+        Insert: {
+          address_line1?: string | null
+          address_line2?: string | null
+          age_verified?: boolean
+          avatar_url?: string | null
+          bank_confirmation_url?: string | null
+          city?: string | null
+          country?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          display_name?: string | null
+          email?: string | null
+          full_name?: string | null
+          government_id_url?: string | null
+          id: string
+          kyc_status?: string
+          phone?: string | null
+          postal_code?: string | null
+          proof_of_address_url?: string | null
+          punt_points?: number
+          social_discord?: string | null
+          social_telegram?: string | null
+          social_twitter?: string | null
+          state?: string | null
+          updated_at?: string
+          username: string
+        }
+        Update: {
+          address_line1?: string | null
+          address_line2?: string | null
+          age_verified?: boolean
+          avatar_url?: string | null
+          bank_confirmation_url?: string | null
+          city?: string | null
+          country?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          display_name?: string | null
+          email?: string | null
+          full_name?: string | null
+          government_id_url?: string | null
+          id?: string
+          kyc_status?: string
+          phone?: string | null
+          postal_code?: string | null
+          proof_of_address_url?: string | null
+          punt_points?: number
+          social_discord?: string | null
+          social_telegram?: string | null
+          social_twitter?: string | null
+          state?: string | null
+          updated_at?: string
+          username?: string
+        }
+        Relationships: []
+      }
+      support_messages: {
+        Row: {
+          created_at: string
+          id: string
+          message: string
+          status: string
+          subject: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          message: string
+          status?: string
+          subject: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          message?: string
+          status?: string
+          subject?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
