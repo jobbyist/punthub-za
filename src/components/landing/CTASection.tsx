@@ -1,10 +1,15 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Target } from "lucide-react";
+import FoundingMembersModal from "@/components/FoundingMembersModal";
 
-const CTASection = () => (
+const CTASection = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  return (
   <section className="py-20 bg-primary text-primary-foreground">
+    <FoundingMembersModal open={modalOpen} onOpenChange={setModalOpen} />
     <div className="container text-center">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -22,13 +27,14 @@ const CTASection = () => (
         <Button
           size="lg"
           variant="secondary"
-          asChild
+          onClick={() => setModalOpen(true)}
         >
-          <Link to="/signup">Get Started — It's Free</Link>
+          Get Started — It's Free
         </Button>
       </motion.div>
     </div>
   </section>
-);
+  );
+};
 
 export default CTASection;

@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Target } from "lucide-react";
+import FoundingMembersModal from "@/components/FoundingMembersModal";
 
 const stats = [
   { value: "80+", label: "Live Events" },
@@ -10,8 +11,12 @@ const stats = [
   { value: "#1", label: "Prediction Hub" },
 ];
 
-const HeroSection = () => (
+const HeroSection = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  return (
   <section className="relative overflow-hidden py-20 md:py-32">
+    <FoundingMembersModal open={modalOpen} onOpenChange={setModalOpen} />
     <div className="container text-center relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -50,8 +55,8 @@ const HeroSection = () => (
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
       >
-        <Button size="lg" asChild>
-          <Link to="/signup">Join Now — Become A Founding Member</Link>
+        <Button size="lg" onClick={() => setModalOpen(true)}>
+          Join Now — Become A Founding Member
         </Button>
         <Button size="lg" variant="outline" asChild>
           <a href="#how-it-works">See How It Works ↓</a>
@@ -80,6 +85,7 @@ const HeroSection = () => (
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
     </div>
   </section>
-);
+  );
+};
 
 export default HeroSection;
