@@ -36,6 +36,9 @@ interface Profile {
   country: string | null;
   age_verified: boolean;
   kyc_status: string;
+  government_id_url: string | null;
+  bank_confirmation_url: string | null;
+  proof_of_address_url: string | null;
   social_twitter: string | null;
   social_discord: string | null;
   social_telegram: string | null;
