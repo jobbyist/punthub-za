@@ -14,6 +14,113 @@ export type Database = {
   }
   public: {
     Tables: {
+      markets: {
+        Row: {
+          category: string
+          created_at: string | null
+          description: string | null
+          end_date: string | null
+          id: string
+          image_emoji: string | null
+          image_url: string | null
+          is_active: boolean | null
+          polymarket_id: string | null
+          question: string
+          resolution: string | null
+          resolved: boolean | null
+          source: string | null
+          trending: string | null
+          updated_at: string | null
+          volume: string | null
+          volume_num: number | null
+          yes_price: number
+        }
+        Insert: {
+          category?: string
+          created_at?: string | null
+          description?: string | null
+          end_date?: string | null
+          id?: string
+          image_emoji?: string | null
+          image_url?: string | null
+          is_active?: boolean | null
+          polymarket_id?: string | null
+          question: string
+          resolution?: string | null
+          resolved?: boolean | null
+          source?: string | null
+          trending?: string | null
+          updated_at?: string | null
+          volume?: string | null
+          volume_num?: number | null
+          yes_price?: number
+        }
+        Update: {
+          category?: string
+          created_at?: string | null
+          description?: string | null
+          end_date?: string | null
+          id?: string
+          image_emoji?: string | null
+          image_url?: string | null
+          is_active?: boolean | null
+          polymarket_id?: string | null
+          question?: string
+          resolution?: string | null
+          resolved?: boolean | null
+          source?: string | null
+          trending?: string | null
+          updated_at?: string | null
+          volume?: string | null
+          volume_num?: number | null
+          yes_price?: number
+        }
+        Relationships: []
+      }
+      predictions: {
+        Row: {
+          amount: number
+          created_at: string | null
+          id: string
+          market_id: string
+          payout: number | null
+          position: string
+          price_at_prediction: number
+          status: string | null
+          user_id: string
+        }
+        Insert: {
+          amount?: number
+          created_at?: string | null
+          id?: string
+          market_id: string
+          payout?: number | null
+          position: string
+          price_at_prediction: number
+          status?: string | null
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string | null
+          id?: string
+          market_id?: string
+          payout?: number | null
+          position?: string
+          price_at_prediction?: number
+          status?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "predictions_market_id_fkey"
+            columns: ["market_id"]
+            isOneToOne: false
+            referencedRelation: "markets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           address_line1: string | null
@@ -41,6 +148,7 @@ export type Database = {
           state: string | null
           updated_at: string
           username: string
+          wallet_balance: number | null
         }
         Insert: {
           address_line1?: string | null
@@ -68,6 +176,7 @@ export type Database = {
           state?: string | null
           updated_at?: string
           username: string
+          wallet_balance?: number | null
         }
         Update: {
           address_line1?: string | null
@@ -95,6 +204,7 @@ export type Database = {
           state?: string | null
           updated_at?: string
           username?: string
+          wallet_balance?: number | null
         }
         Relationships: []
       }
@@ -121,6 +231,39 @@ export type Database = {
           message?: string
           status?: string
           subject?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      wallet_transactions: {
+        Row: {
+          amount: number
+          created_at: string | null
+          currency: string | null
+          id: string
+          metadata: Json | null
+          status: string | null
+          type: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string | null
+          currency?: string | null
+          id?: string
+          metadata?: Json | null
+          status?: string | null
+          type: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string | null
+          currency?: string | null
+          id?: string
+          metadata?: Json | null
+          status?: string | null
+          type?: string
           user_id?: string
         }
         Relationships: []
