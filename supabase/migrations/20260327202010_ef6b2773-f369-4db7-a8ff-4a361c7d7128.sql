@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX IF NOT EXISTS markets_polymarket_id_key ON public.markets (polymarket_id) WHERE polymarket_id IS NOT NULL;
