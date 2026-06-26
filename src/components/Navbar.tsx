@@ -7,10 +7,10 @@ import logo from "@/assets/punthub-logo.jpeg";
 
 const navLinks = [
   { label: "Markets", href: "/markets" },
+  { label: "Casino", href: "/casino" },
   { label: "Dashboard", href: "/dashboard" },
   { label: "Leaderboard", href: "/leaderboard" },
   { label: "Rewards", href: "/rewards" },
-  { label: "How It Works", href: "/#how-it-works" },
 ];
 
 const Navbar = () => {
