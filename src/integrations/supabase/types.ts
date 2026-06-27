@@ -253,6 +253,7 @@ export type Database = {
           preferred_language: string
           proof_of_address_url: string | null
           punt_points: number
+          selfie_url: string | null
           social_discord: string | null
           social_telegram: string | null
           social_twitter: string | null
@@ -288,6 +289,7 @@ export type Database = {
           preferred_language?: string
           proof_of_address_url?: string | null
           punt_points?: number
+          selfie_url?: string | null
           social_discord?: string | null
           social_telegram?: string | null
           social_twitter?: string | null
@@ -323,6 +325,7 @@ export type Database = {
           preferred_language?: string
           proof_of_address_url?: string | null
           punt_points?: number
+          selfie_url?: string | null
           social_discord?: string | null
           social_telegram?: string | null
           social_twitter?: string | null
