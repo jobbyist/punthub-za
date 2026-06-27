@@ -14,6 +14,96 @@ export type Database = {
   }
   public: {
     Tables: {
+      cv_submissions: {
+        Row: {
+          created_at: string
+          cv_url: string | null
+          email: string
+          full_name: string
+          id: string
+          message: string | null
+          phone: string | null
+        }
+        Insert: {
+          created_at?: string
+          cv_url?: string | null
+          email: string
+          full_name: string
+          id?: string
+          message?: string | null
+          phone?: string | null
+        }
+        Update: {
+          created_at?: string
+          cv_url?: string | null
+          email?: string
+          full_name?: string
+          id?: string
+          message?: string | null
+          phone?: string | null
+        }
+        Relationships: []
+      }
+      deposits: {
+        Row: {
+          amount: number
+          created_at: string
+          currency: string
+          id: string
+          method: string
+          reference: string | null
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          currency?: string
+          id?: string
+          method: string
+          reference?: string | null
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          currency?: string
+          id?: string
+          method?: string
+          reference?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      legal_acceptances: {
+        Row: {
+          accepted_at: string
+          document: string
+          id: string
+          user_id: string
+          version: string
+        }
+        Insert: {
+          accepted_at?: string
+          document: string
+          id?: string
+          user_id: string
+          version: string
+        }
+        Update: {
+          accepted_at?: string
+          document?: string
+          id?: string
+          user_id?: string
+          version?: string
+        }
+        Relationships: []
+      }
       markets: {
         Row: {
           category: string
@@ -77,6 +167,24 @@ export type Database = {
         }
         Relationships: []
       }
+      newsletter_subscribers: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+        }
+        Relationships: []
+      }
       predictions: {
         Row: {
           amount: number
@@ -134,20 +242,27 @@ export type Database = {
           date_of_birth: string | null
           display_name: string | null
           email: string | null
+          first_login_at: string | null
           full_name: string | null
           government_id_url: string | null
           id: string
           kyc_status: string
           phone: string | null
           postal_code: string | null
+          preferred_currency: string
+          preferred_language: string
           proof_of_address_url: string | null
           punt_points: number
           social_discord: string | null
           social_telegram: string | null
           social_twitter: string | null
           state: string | null
+          theme: string
           updated_at: string
           username: string
+          verification_reviewed_at: string | null
+          verification_status: Database["public"]["Enums"]["verification_status"]
+          verification_submitted_at: string | null
           wallet_balance: number | null
         }
         Insert: {
@@ -162,20 +277,27 @@ export type Database = {
           date_of_birth?: string | null
           display_name?: string | null
           email?: string | null
+          first_login_at?: string | null
           full_name?: string | null
           government_id_url?: string | null
           id: string
           kyc_status?: string
           phone?: string | null
           postal_code?: string | null
+          preferred_currency?: string
+          preferred_language?: string
           proof_of_address_url?: string | null
           punt_points?: number
           social_discord?: string | null
           social_telegram?: string | null
           social_twitter?: string | null
           state?: string | null
+          theme?: string
           updated_at?: string
           username: string
+          verification_reviewed_at?: string | null
+          verification_status?: Database["public"]["Enums"]["verification_status"]
+          verification_submitted_at?: string | null
           wallet_balance?: number | null
         }
         Update: {
@@ -190,21 +312,67 @@ export type Database = {
           date_of_birth?: string | null
           display_name?: string | null
           email?: string | null
+          first_login_at?: string | null
           full_name?: string | null
           government_id_url?: string | null
           id?: string
           kyc_status?: string
           phone?: string | null
           postal_code?: string | null
+          preferred_currency?: string
+          preferred_language?: string
           proof_of_address_url?: string | null
           punt_points?: number
           social_discord?: string | null
           social_telegram?: string | null
           social_twitter?: string | null
           state?: string | null
+          theme?: string
           updated_at?: string
           username?: string
+          verification_reviewed_at?: string | null
+          verification_status?: Database["public"]["Enums"]["verification_status"]
+          verification_submitted_at?: string | null
           wallet_balance?: number | null
+        }
+        Relationships: []
+      }
+      responsible_gaming_settings: {
+        Row: {
+          account_suspended: boolean
+          cooling_off_until: string | null
+          daily_deposit_limit: number | null
+          monthly_deposit_limit: number | null
+          reality_check_minutes: number | null
+          self_excluded_until: string | null
+          session_limit_minutes: number | null
+          updated_at: string
+          user_id: string
+          weekly_deposit_limit: number | null
+        }
+        Insert: {
+          account_suspended?: boolean
+          cooling_off_until?: string | null
+          daily_deposit_limit?: number | null
+          monthly_deposit_limit?: number | null
+          reality_check_minutes?: number | null
+          self_excluded_until?: string | null
+          session_limit_minutes?: number | null
+          updated_at?: string
+          user_id: string
+          weekly_deposit_limit?: number | null
+        }
+        Update: {
+          account_suspended?: boolean
+          cooling_off_until?: string | null
+          daily_deposit_limit?: number | null
+          monthly_deposit_limit?: number | null
+          reality_check_minutes?: number | null
+          self_excluded_until?: string | null
+          session_limit_minutes?: number | null
+          updated_at?: string
+          user_id?: string
+          weekly_deposit_limit?: number | null
         }
         Relationships: []
       }
@@ -231,6 +399,39 @@ export type Database = {
           message?: string
           status?: string
           subject?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      support_tickets: {
+        Row: {
+          category: string
+          created_at: string
+          id: string
+          message: string
+          status: string
+          subject: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          id?: string
+          message: string
+          status?: string
+          subject: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          id?: string
+          message?: string
+          status?: string
+          subject?: string
+          updated_at?: string
           user_id?: string
         }
         Relationships: []
@@ -264,6 +465,45 @@ export type Database = {
           metadata?: Json | null
           status?: string | null
           type?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      withdrawals: {
+        Row: {
+          amount: number
+          created_at: string
+          currency: string
+          destination: Json | null
+          fee: number
+          id: string
+          method: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          currency?: string
+          destination?: Json | null
+          fee?: number
+          id?: string
+          method: string
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          currency?: string
+          destination?: Json | null
+          fee?: number
+          id?: string
+          method?: string
+          status?: string
+          updated_at?: string
           user_id?: string
         }
         Relationships: []
@@ -302,7 +542,12 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      verification_status:
+        | "unverified"
+        | "pending"
+        | "approved"
+        | "rejected"
+        | "resubmit"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -429,6 +674,14 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      verification_status: [
+        "unverified",
+        "pending",
+        "approved",
+        "rejected",
+        "resubmit",
+      ],
+    },
   },
 } as const
