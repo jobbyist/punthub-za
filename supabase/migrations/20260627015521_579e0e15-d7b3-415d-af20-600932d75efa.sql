@@ -1,0 +1,3 @@
+ALTER TABLE public.profiles
+  ADD COLUMN IF NOT EXISTS selfie_url TEXT,
+  ADD COLUMN IF NOT EXISTS first_login_at TIMESTAMPTZ;
